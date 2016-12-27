@@ -20,7 +20,8 @@ module WxPay
       ::JSON.parse(RestClient::Request.execute(
         {
           method: :get,
-          url: url
+          url: url,
+          verify_ssl: false
         }.merge(options)
       ), quirks_mode: true)
     end
@@ -307,7 +308,8 @@ module WxPay
             method: :post,
             url: url,
             payload: payload,
-            headers: { content_type: 'application/xml' }
+            headers: { content_type: 'application/xml' },
+            verify_ssl: false
           }.merge(options)
         )
       end
